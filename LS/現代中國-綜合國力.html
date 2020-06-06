@@ -1,0 +1,607 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>現代中國-綜合國力</title><style type='text/css'>html {overflow-x: initial !important;}:root { --node-fill: #ECECFF; --node-border: #CCCCFF; --cluster-fill: #ffffde; --cluster-border: #aaaa33; --note-fill: #fff5ad; --note-border: #aaaa33; --mermaid-color: var(--text-color); }
+.label { font-family: var(--mermaid-font-family); color: rgb(51, 51, 51); }
+.label text { fill: rgb(51, 51, 51); }
+.node rect, .node circle, .node ellipse, .node polygon { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1px; }
+.node .label { text-align: center; }
+.node.clickable { cursor: pointer; }
+.arrowheadPath { fill: var(--text-color); }
+.edgePath .path { stroke: var(--text-color); stroke-width: 1.5px; }
+.edgeLabel { background-color: rgb(232, 232, 232); text-align: center; }
+.cluster rect { fill: var(--cluster-fill); stroke: var(--cluster-border); stroke-width: 1px; }
+.cluster text { fill: var(--text-color); }
+div.mermaidTooltip { position: absolute; text-align: center; max-width: 200px; padding: 2px; font-family: var(--mermaid-font-family); font-size: 12px; background: var(--cluster-fill); border: 1px solid var(--cluster-border); border-radius: 2px; pointer-events: none; z-index: 100; }
+.actor { stroke: var(--node-border); fill: var(--node-fill); }
+text.actor { fill: black; stroke: none; }
+.actor-line { stroke: grey; }
+.messageLine0 { stroke-width: 1.5; stroke: var(--text-color); }
+.messageLine1 { stroke-width: 1.5; stroke: var(--text-color); }
+#arrowhead { fill: var(--text-color); }
+.sequenceNumber { fill: white; }
+#sequencenumber { fill: var(--text-color); }
+#crosshead path { fill: var(--text-color)  !important; stroke: var(--text-color)  !important; }
+.messageText { fill: var(--text-color); stroke: none; }
+.labelBox { stroke: var(--node-border); fill: var(--node-fill); }
+.labelText { fill: black; stroke: none; }
+.loopText { fill: black; stroke: none; }
+.loopLine { stroke-width: 2; stroke: var(--node-border); }
+.note { stroke: var(--cluster-border); fill: rgb(255, 245, 173); }
+.noteText { fill: black; stroke: none; font-family: var(--mermaid-font-family); font-size: 14px; }
+.activation0 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.activation1 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.activation2 { fill: rgb(244, 244, 244); stroke: rgb(102, 102, 102); }
+.mermaid-main-font { font-family: var(--mermaid-font-family); }
+.section { stroke: none; opacity: 0.2; }
+.section0 { fill: rgba(102, 102, 255, 0.49); }
+.section2 { fill: rgb(255, 244, 0); }
+.section1, .section3 { fill: white; opacity: 0.2; }
+.sectionTitle0 { fill: var(--text-color); }
+.sectionTitle1 { fill: var(--text-color); }
+.sectionTitle2 { fill: var(--text-color); }
+.sectionTitle3 { fill: var(--text-color); }
+.sectionTitle { text-anchor: start; font-size: 11px; font-family: var(--mermaid-font-family); }
+.grid .tick { stroke: lightgrey; opacity: 0.3; shape-rendering: crispedges; }
+.grid .tick text { font-family: var(--mermaid-font-family); }
+.grid path { stroke-width: 0; }
+.today { fill: none; stroke: red; stroke-width: 2px; }
+.task { stroke-width: 2; }
+.taskText { text-anchor: middle; font-family: var(--mermaid-font-family); }
+.taskText:not([font-size]) { font-size: 11px; }
+.taskTextOutsideRight { fill: black; text-anchor: start; font-size: 11px; font-family: var(--mermaid-font-family); }
+.taskTextOutsideLeft { fill: black; text-anchor: end; font-size: 11px; }
+.task.clickable { cursor: pointer; }
+.taskText.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskTextOutsideLeft.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskTextOutsideRight.clickable { cursor: pointer; font-weight: bold; fill: rgb(0, 49, 99) !important; }
+.taskText0, .taskText1, .taskText2, .taskText3 { fill: white; }
+.task0, .task1, .task2, .task3 { fill: rgb(138, 144, 221); stroke: rgb(83, 79, 188); }
+.taskTextOutside0, .taskTextOutside2 { fill: black; }
+.taskTextOutside1, .taskTextOutside3 { fill: black; }
+.active0, .active1, .active2, .active3 { fill: rgb(191, 199, 255); stroke: rgb(83, 79, 188); }
+.activeText0, .activeText1, .activeText2, .activeText3 { fill: black !important; }
+.done0, .done1, .done2, .done3 { stroke: grey; fill: lightgrey; stroke-width: 2; }
+.doneText0, .doneText1, .doneText2, .doneText3 { fill: black !important; }
+.crit0, .crit1, .crit2, .crit3 { stroke: rgb(255, 136, 136); fill: red; stroke-width: 2; }
+.activeCrit0, .activeCrit1, .activeCrit2, .activeCrit3 { stroke: rgb(255, 136, 136); fill: rgb(191, 199, 255); stroke-width: 2; }
+.doneCrit0, .doneCrit1, .doneCrit2, .doneCrit3 { stroke: rgb(255, 136, 136); fill: lightgrey; stroke-width: 2; cursor: pointer; shape-rendering: crispedges; }
+.milestone { transform: rotate(45deg) scale(0.8, 0.8); }
+.milestoneText { font-style: italic; }
+.doneCritText0, .doneCritText1, .doneCritText2, .doneCritText3 { fill: black !important; }
+.activeCritText0, .activeCritText1, .activeCritText2, .activeCritText3 { fill: black !important; }
+.titleText { text-anchor: middle; font-size: 18px; fill: black; font-family: var(--mermaid-font-family); }
+g.classGroup text { fill: rgb(147, 112, 219); stroke: none; font-family: var(--mermaid-font-family); font-size: 10px; }
+g.classGroup text .title { font-weight: bolder; }
+g.classGroup rect { fill: var(--node-fill); stroke: rgb(147, 112, 219); }
+g.classGroup line { stroke: rgb(147, 112, 219); stroke-width: 1; }
+.classLabel .box { stroke: none; stroke-width: 0; fill: var(--node-fill); opacity: 0.5; }
+.classLabel .label { fill: rgb(147, 112, 219); font-size: 10px; }
+.relation { stroke: rgb(147, 112, 219); stroke-width: 1; fill: none; }
+#compositionStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#compositionEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#aggregationStart { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#aggregationEnd { fill: var(--node-fill); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#dependencyStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#dependencyEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#extensionStart { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+#extensionEnd { fill: rgb(147, 112, 219); stroke: rgb(147, 112, 219); stroke-width: 1; }
+.commit-id, .commit-msg, .branch-label { fill: lightgrey; color: lightgrey; font-family: var(--mermaid-font-family); }
+.pieTitleText { text-anchor: middle; font-size: 25px; fill: var(--text-color); font-family: var(--mermaid-font-family); }
+.slice { font-family: var(--mermaid-font-family); }
+g.stateGroup text { fill: rgb(147, 112, 219); stroke: none; font-size: 10px; font-family: var(--mermaid-font-family); }
+g.stateGroup text { fill: rgb(147, 112, 219); stroke: none; font-size: 10px; }
+g.stateGroup .state-title { font-weight: bolder; fill: black; }
+g.stateGroup rect { fill: var(--node-fill); stroke: rgb(147, 112, 219); }
+g.stateGroup line { stroke: rgb(147, 112, 219); stroke-width: 1; }
+.transition { stroke: rgb(147, 112, 219); stroke-width: 1; fill: none; }
+.stateGroup .composit { fill: white; border-bottom: 1px; }
+.state-note { stroke: var(--cluster-border); fill: rgb(255, 245, 173); }
+.state-note text { fill: black; stroke: none; font-size: 10px; }
+.stateLabel .box { stroke: none; stroke-width: 0; fill: var(--node-fill); opacity: 0.5; }
+.stateLabel text { fill: black; font-size: 10px; font-weight: bold; font-family: var(--mermaid-font-family); }
+.node text { font-size: 14px; }
+div.mermaidTooltip { position: absolute; text-align: center; max-width: 200px; padding: 2px; font-family: var(--mermaid-font-family); font-size: 12px; background: var(--cluster-fill); border: 1px solid var(--cluster-border); border-radius: 2px; pointer-events: none; z-index: 100; }
+#write .md-diagram-panel .md-diagram-panel-preview div { width: initial; }
+
+
+:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; bottom: 0px; top: 0px; left: 0px; right: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 40px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px !important; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-diagram-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  html.blink-to-pdf { font-size: 13px; }
+  .typora-export #write { padding-left: 32px; padding-right: 32px; padding-bottom: 0px; break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.8; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.md-inline-math .MathJax_SVG .noError { display: none !important; }
+.html-for-mac .inline-math-svg .MathJax_SVG { vertical-align: 0.2px; }
+.md-math-block .MathJax_SVG_Display { text-align: center; margin: 0px; position: relative; text-indent: 0px; max-width: none; max-height: none; min-height: 0px; min-width: 100%; width: auto; overflow-y: hidden; display: block !important; }
+.MathJax_SVG_Display, .md-inline-math .MathJax_SVG_Display { width: auto; margin: inherit; display: inline-block !important; }
+.MathJax_SVG .MJX-monospace { font-family: var(--monospace); }
+.MathJax_SVG .MJX-sans-serif { font-family: sans-serif; }
+.MathJax_SVG { display: inline; font-style: normal; font-weight: 400; line-height: normal; zoom: 90%; text-indent: 0px; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0px; min-height: 0px; border: 0px; padding: 0px; margin: 0px; }
+.MathJax_SVG * { transition: none 0s ease 0s; }
+.MathJax_SVG_Display svg { vertical-align: middle !important; margin-bottom: 0px !important; margin-top: 0px !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+svg[id^="mermaidChart"] { line-height: 1em; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+mark .md-meta { color: rgb(0, 0, 0); opacity: 0.3 !important; }
+
+
+.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right: 1px solid rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 30px; z-index: 3; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: none !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right: 30px solid transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right: none; width: auto; }
+.CodeMirror-linebackground { position: absolute; left: 0px; right: 0px; top: 0px; bottom: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right: none; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+
+/* Sspai Web Theme A theme to [sspai](ssp.ai) default theme. Developed by Codegass(wchweichenhao@gmial.com) & Yves(yves@sspai.com) Download Cuto on the App Store and Google Play! */
+
+body {
+	font-size: 15px;
+	color: #333;
+	background: #fff;
+	font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
+	margin: 0;
+	padding: 10%;
+}
+h1 {
+	font-size: 2.2em;
+	font-weight: 700;
+	line-height: 1.1;
+	padding-top: 16px;
+	margin-bottom: 4px;
+}
+h2, h3, h4, h5, h6 {
+	line-height: 1.5em;
+	margin-top: 2.2em;
+	margin-bottom: 4px;
+}
+h2 {
+	font-size: 1.4em;
+	margin: 40px 10px 20px 0;
+	padding-left: 9px;
+	border-left: 6px solid #ff7e79;
+	font-weight: 700;
+	line-height: 1.4;
+}
+h3 {
+	font-weight: 700;
+	font-size: 1.2em;
+	line-height: 1.4;
+	margin: 10px 0 5px;
+	padding-top: 10px;
+}
+h4 {
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 1.1em;
+	line-height: 1.4;
+	margin: 10px 0 5px;
+	padding-top: 10px
+}
+h5, h6 {
+	font-size: .9em;
+}
+h5 {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+h6 {
+	font-weight: normal;
+	color: #AAA;
+}
+img {
+	width: 100%;
+	border-radius: 5px;
+	display: block;
+	margin-bottom: 15px;
+	height: auto;
+}
+dl, ol, ul {
+	margin-top: 12px;
+	margin-bottom: 20px;
+	padding-left: 5%;
+	line-height: 1.8;
+}
+p {
+	margin: 0 0 20px;
+	padding: 0;
+	line-height: 1.8;
+}
+a {
+	color: #f22f27;
+	text-decoration: none;
+}
+a:hover {
+	color: #f55852;
+	text-decoration: underline;
+}
+a:focus {
+	outline-offset: -2px;
+}
+blockquote {
+	font-size: 1em;
+	font-style: normal;
+	padding: 30px 38px;
+	margin: 0 0 15px;
+	position: relative;
+	line-height: 1.8;
+	text-indent: 0;
+	border: none;
+	color: #888;
+}
+blockquote:before {
+	content: "“";
+	left: 12px;
+	top: 0;
+	color: #E0E0E0;
+	font-size: 4em;
+	font-family: Arial, serif;
+	line-height: 1em;
+	font-weight: 700;
+	position: absolute;
+}
+blockquote:after {
+	content: "”";
+	right: 12px;
+	bottom: -26px;
+	color: #E0E0E0;
+	font-size: 4em;
+	font-family: Arial, serif;
+	line-height: 1em;
+	font-weight: 700;
+	position: absolute;
+	bottom: -31px;
+}
+strong, dfn {
+	font-weight: 700;
+}
+em, dfn {
+	font-style: italic;
+	font-weight: 400;
+}
+del {
+	text-decoration: line-through;
+}
+/*code {font-size:90%;}*/
+
+/*pre {text-align:left; overflow-x: scroll; color: #257fa0; background: #f6f6f6; padding: 10pt 15pt; border-radius: 3px; border: solid 1px #e2e2e2;}*/
+
+pre {
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 1.42857;
+	word-break: break-all;
+	word-wrap: break-word;
+	border-radius: 4px;
+	white-space: pre-wrap;
+	display: block;
+	background: #f8f8f8;
+	padding: 10px 20px;
+	border: none;
+	margin-bottom: 25px;
+	color: #666;
+	font-family: Courier, sans-serif;
+}
+code {
+	color: #c7254e;
+	background-color: #f9f2f4;
+	border-radius: 4px;
+	font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+	padding: 2px 4px;
+	font-size: 90%;
+}
+p>code {
+	color: #c7264e;
+	background-color: #f9f2f4;
+	font-size: .95em;
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+}
+figure {
+	margin: 1em 0;
+}
+figcaption {
+	font-size: 0.75em;
+	padding: 0.5em 2em;
+	margin-bottom: 2em;
+}
+figure img {
+	margin-bottom: 0px;
+}
+hr {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+ol p, ul p {
+	margin-bottom: 0px;
+}
+li {
+	margin-bottom: 0.75em;
+	margin-top: 0.75em;
+}
+ol#footnotes {
+	font-size: 0.95em;
+	padding-top: 1em;
+	margin-top: 1em;
+	margin-left: 0;
+	border-top: 1px solid #eaeaea;
+	counter-reset: footer-counter;
+	list-style: none;
+	color: #555;
+	padding-left: 5%;
+	margin: 20px 0;
+}
+ol#footnotes li {
+	margin-bottom: 10px;
+	margin-left: 16px;
+	font-weight: 400;
+	line-height: 2;
+	list-style-type: none;
+}
+ol#footnotes li:before {
+	content: counter(footer-counter) ". ";
+	counter-increment: footer-counter;
+	font-weight: 800;
+	font-size: .95em;
+}
+@keyframes highfade {
+	0% {
+		background-color: none;
+	}
+	20% {
+		background-color: yellow;
+	}
+	100% {
+		background-color: none;
+	}
+}
+@-webkit-keyframes highfade {
+	0% {
+		background-color: none;
+	}
+	20% {
+		background-color: yellow;
+	}
+	100% {
+		background-color: none;
+	}
+}
+a:target, ol#footnotes li:target, sup a:target {
+	animation-name: highfade;
+	animation-duration: 2s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	-webkit-animation-name: highfade;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in-out;
+}
+a:target {
+	border: 0;
+	outline: 0;
+}
+animation-iteration-count: 1;
+-webkit-animation-timing-function: ease-in-out;
+}
+a:target {
+	border: 0;
+	outline: 0;
+}
+tion-iteration-count: 1;
+-webkit-animation-timing-function: ease-in-out;
+}
+a:target {
+	border: 0;
+	outline: 0;
+}
+
+
+</style>
+</head>
+<body class='typora-export os-windows' >
+<div  id='write'  class = 'is-node'><h1><a name="現代中國-綜合國力" class="md-header-anchor"></a><span>現代中國-綜合國力</span></h1><div class="md-diagram-panel"><svg id="mermaidChart5" width="1393.2734260559082" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="-10 -10 935.5156173706055 259.21875"><style>
+:root { --mermaid-font-family: sans-serif}
+:root { --mermaid-alt-font-family: sans-serif}</style><style></style><g></g><defs><marker id="extensionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="extensionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="compositionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="compositionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><g id="mermaidChart5classId0" class="classGroup" transform="translate(469.22654914855957,0 )"><rect x="0" y="0" width="89.78125" height="64.609375"></rect><text y="15" x="0"><tspan class="title" x="24.5390625">綜合國力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="89.78125"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">無Data "軟實力"</tspan></text><line x1="0" y1="41.40625" y2="41.40625" x2="89.78125"></line><text x="5" y="56.40625" fill="white" class="classText"><tspan x="5">有Data (硬實力)</tspan></text></g><g id="mermaidChart5classId1" class="classGroup" transform="translate(0,134.609375 )"><rect x="0" y="0" width="104.046875" height="84.609375"></rect><text y="15" x="0"><tspan class="title" x="36.671871185302734">政治力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="104.04686737060547"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">管制效能 |動員能力|</tspan><tspan x="5" dy="10">建立安全環境</tspan></text><line x1="0" y1="51.40625" y2="51.40625" x2="104.04686737060547"></line><text x="5" y="66.40625" fill="white" class="classText"><tspan x="5">認受性()</tspan><tspan x="5" dy="10">國民凝聚力()</tspan></text></g><g id="mermaidChart5classId2" class="classGroup" transform="translate(154.04686737060547,114.609375 )"><rect x="0" y="0" width="96.125" height="124.609375"></rect><text y="15" x="0"><tspan class="title" x="32.710933685302734">經濟力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="96.12499237060547"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">國內生產總值</tspan><tspan x="5" dy="10">經濟增長速度</tspan><tspan x="5" dy="10">外匯儲備</tspan><tspan x="5" dy="10">人均經濟生產總值</tspan><tspan x="5" dy="10">對外貿易額</tspan></text><line x1="0" y1="81.40625" y2="81.40625" x2="96.12499237060547"></line><text x="5" y="96.40625" fill="white" class="classText"><tspan x="5">全球競爭力()</tspan><tspan x="5" dy="10">吸引外資能力()</tspan><tspan x="5" dy="10">產業結構()</tspan></text></g><g id="mermaidChart5classId3" class="classGroup" transform="translate(300.17185974121094,129.609375 )"><rect x="0" y="0" width="132.75" height="94.609375"></rect><text y="15" x="0"><tspan class="title" x="51.0234375">資源力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="132.75"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">土地資源 [人均7畝地]</tspan><tspan x="5" dy="10">水資源 [低於世界標準]</tspan><tspan x="5" dy="10">礦產 [可燃冰&amp;煤炭&amp;稀土]</tspan></text><line x1="0" y1="61.40625" y2="61.40625" x2="132.75"></line><text x="5" y="76.40625" fill="white" class="classText"><tspan x="5">人口紅利()</tspan><tspan x="5" dy="10">教育水平()</tspan></text></g><g id="mermaidChart5classId4" class="classGroup" transform="translate(482.92185974121094,134.609375 )"><rect x="0" y="0" width="62.390625" height="84.609375"></rect><text y="15" x="0"><tspan class="title" x="15.843751907348633">科技力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="62.390628814697266"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">論文數量</tspan></text><line x1="0" y1="41.40625" y2="41.40625" x2="62.390628814697266"></line><text x="5" y="56.40625" fill="white" class="classText"><tspan x="5">航天科技()</tspan><tspan x="5" dy="10">資訊科技()</tspan><tspan x="5" dy="10">生物科技()</tspan></text></g><g id="mermaidChart5classId5" class="classGroup" transform="translate(595.3124885559082,148.5 )"><rect x="0" y="0" width="55.421875" height="56.828125"></rect><text y="15" x="0"><tspan class="title" x="12.7109375">軍事力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="55.421875"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">國防預算</tspan><tspan x="5" dy="10">軍備武器</tspan></text><line x1="0" y1="51.40625" y2="51.40625" x2="55.421875"></line><text x="5" y="66.40625" fill="white" class="classText"></text></g><g id="mermaidChart5classId6" class="classGroup" transform="translate(700.7343635559082,139.609375 )"><rect x="0" y="0" width="102.390625" height="74.609375"></rect><text y="15" x="0"><tspan class="title" x="35.84375">外交力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="102.390625"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">外交政策</tspan><tspan x="5" dy="10">國際貢獻</tspan></text><line x1="0" y1="51.40625" y2="51.40625" x2="102.390625"></line><text x="5" y="66.40625" fill="white" class="classText"><tspan x="5">處理國際事務能力()</tspan></text></g><g id="mermaidChart5classId7" class="classGroup" transform="translate(853.1249885559082,144.609375 )"><rect x="0" y="0" width="62.390625" height="64.609375"></rect><text y="15" x="0"><tspan class="title" x="15.843751907348633">文化力</tspan></text><line x1="0" y1="23.203125" y2="23.203125" x2="62.390628814697266"></line><text x="5" y="33.203125" fill="white" class="classText"><tspan x="5">文化載體</tspan></text><line x1="0" y1="41.40625" y2="41.40625" x2="62.390628814697266"></line><text x="5" y="56.40625" fill="white" class="classText"><tspan x="5">維權事務()</tspan></text></g><path d="M469.22654914855957,37.87161691723419L399.6926965713501,46.49457659769516C330.1588439941406,55.11753627815613,191.09113883972168,72.36345563907805,121.5572862625122,88.48641531953903C52.023433685302734,104.609375,52.023433685302734,119.609375,52.023433685302734,127.109375L52.023433685302734,134.609375" id="edge35" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="220.09375" y="53.578125" width="35.703125" height="18.21875"></rect><text class="label" x="238.2960317150969" y="66.50953164525274" fill="red" text-anchor="middle">硬實力</text></g><path d="M469.22654914855957,40.54949147595943L424.707018216451,48.72613872996619C380.18748728434247,56.902785983972954,291.1484254201253,73.25608049198648,246.62889448801675,85.59939441265992C202.1093635559082,97.94270833333333,202.1093635559082,106.27604166666667,202.1093635559082,110.44270833333333L202.1093635559082,114.609375" id="edge36" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="305.171875" y="54.40625" width="35.703125" height="18.21875"></rect><text class="label" x="323.37359668432225" y="67.33746786039526" fill="red" text-anchor="middle">硬實力</text></g><path d="M469.22654914855957,49.736670671112535L452.11326758066815,56.382121392593774C434.9999860127767,63.02757211407502,400.77342287699383,76.3184735570375,383.66014130910236,89.63059094518542C366.54685974121094,102.94270833333333,366.54685974121094,116.27604166666667,366.54685974121094,122.94270833333333L366.54685974121094,129.609375" id="edge37" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="381.046875" y="63.984375" width="35.703125" height="18.21875"></rect><text class="label" x="399.2430383083562" y="76.91275439063745" fill="red" text-anchor="middle">硬實力</text></g><path d="M514.1171741485596,64.609375L514.1171741485596,68.77604166666667C514.1171741485596,72.94270833333333,514.1171741485596,81.27604166666667,514.1171741485596,92.94270833333333C514.1171741485596,104.609375,514.1171741485596,119.609375,514.1171741485596,127.109375L514.1171741485596,134.609375" id="edge38" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="495.921875" y="86.6875" width="35.703125" height="18.203125"></rect><text class="label" x="514.1171741485596" y="99.609375" fill="red" text-anchor="middle">硬實力</text></g><path d="M559.0077991485596,55.925399738753555L569.6770702997843,61.53939561562796C580.3463414510092,67.15339149250237,601.6848837534586,78.38138324625119,612.3541549046835,93.81048328979226C623.0234260559082,109.23958333333333,623.0234260559082,128.86979166666666,623.0234260559082,138.68489583333334L623.0234260559082,148.5" id="edge39" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="598.875" y="73.546875" width="35.703125" height="18.21875"></rect><text class="label" x="617.0737253687399" y="86.47873986541863" fill="red" text-anchor="middle">硬實力</text></g><path d="M559.0077991485596,43.121794324379266L591.1614452997843,50.86972443698272C623.3150914510092,58.61765454958618,687.6223837534586,74.11351477479309,719.7760299046835,90.19477822072987C751.9296760559082,106.27604166666667,751.9296760559082,122.94270833333333,751.9296760559082,131.27604166666666L751.9296760559082,139.609375" id="edge40" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="661.578125" y="59.296875" width="35.703125" height="18.203125"></rect><text class="label" x="679.7730831069252" y="72.22210150999177" fill="red" text-anchor="middle">硬實力</text></g><path d="M559.0077991485596,39.25342195705616L613.2265497843424,47.6460807975468C667.4453004201254,56.03873963803744,775.882801691691,72.82405731901872,830.101552327474,90.38338282617603C884.3203029632568,107.94270833333333,884.3203029632568,126.27604166666667,884.3203029632568,135.44270833333334L884.3203029632568,144.609375" id="edge41" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="730.640625" y="55.71875" width="35.703125" height="18.203125"></rect><text class="label" x="748.8403957441473" y="68.63809425859355" fill="red" text-anchor="middle">軟實力</text></g></svg></div><p><span>Paper2 衡量指標:</span></p><ul><li><p><strong><span>GDP</span></strong><span> &gt; 經濟</span></p></li><li><p><strong><span>人類發展指數</span></strong><span> &gt; 文化力</span></p></li><li><p><span>堅尼係數 &gt; 經濟力 / 社會發展</span></p></li><li><p><strong><span>可持續發展</span></strong><span> &gt; 社會發展</span></p><ul><li><p><span>環環相扣 &gt; 三段:</span></p><ul><li><span>經濟</span></li><li><span>環境</span></li><li><span>文化</span></li></ul></li></ul></li><li><p><span>信息力 &gt; 文化力 / 社會發展</span></p><ul><li><strong><span>網絡審查制度</span></strong></li><li><span>電話普及率</span></li><li><span>互聯網人數</span></li></ul></li></ul></div>
+</body>
+</html>
