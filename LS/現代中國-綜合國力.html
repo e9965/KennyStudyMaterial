@@ -339,32 +339,37 @@ body {
 	background: #fff;
 	font-family: Helvetica, Arial, "PingFang SC", "Microsoft YaHei", "WenQuanYi Micro Hei", "tohoma,sans-serif";
 	margin: 0;
-	padding: 10%;
+	padding: 1%;
 }
 h1 {
-	font-size: 2.2em;
-	font-weight: 700;
-	line-height: 1.1;
-	padding-top: 16px;
-	margin-bottom: 4px;
+	font-size: 2.5em;
+	font-weight: 750;
+	line-height: 1.5;
+	padding-top: 35px;
+	color: white;
+	text-align: center;
+	background: #f56e6e;
+	padding-bottom: 35px;
 }
 h2, h3, h4, h5, h6 {
-	line-height: 1.5em;
+	line-height: 1.1em;
 	margin-top: 2.2em;
-	margin-bottom: 4px;
+	margin-bottom: 1px;
 }
+
 h2 {
 	font-size: 1.4em;
 	margin: 40px 10px 20px 0;
 	padding-left: 9px;
 	border-left: 6px solid #ff7e79;
 	font-weight: 700;
-	line-height: 1.4;
+	line-height: 1.1;
 }
+
 h3 {
 	font-weight: 700;
 	font-size: 1.2em;
-	line-height: 1.4;
+	line-height: 1.1;
 	margin: 10px 0 5px;
 	padding-top: 10px;
 }
@@ -372,7 +377,7 @@ h4 {
 	font-weight: 700;
 	text-transform: uppercase;
 	font-size: 1.1em;
-	line-height: 1.4;
+	line-height: 1.1;
 	margin: 10px 0 5px;
 	padding-top: 10px
 }
@@ -387,6 +392,7 @@ h6 {
 	font-weight: normal;
 	color: #AAA;
 }
+
 img {
 	width: 100%;
 	border-radius: 5px;
@@ -398,12 +404,12 @@ dl, ol, ul {
 	margin-top: 12px;
 	margin-bottom: 20px;
 	padding-left: 5%;
-	line-height: 1.8;
+	line-height: 2.2;
 }
 p {
 	margin: 0 0 20px;
 	padding: 0;
-	line-height: 1.8;
+	line-height: 2.2;
 }
 a {
 	color: #f22f27;
@@ -414,7 +420,7 @@ a:hover {
 	text-decoration: underline;
 }
 a:focus {
-	outline-offset: -2px;
+	outline-offset: 2px;
 }
 blockquote {
 	font-size: 1em;
@@ -480,6 +486,7 @@ pre {
 	color: #666;
 	font-family: Courier, sans-serif;
 }
+
 code {
 	color: #c7254e;
 	background-color: #f9f2f4;
@@ -496,6 +503,9 @@ p>code {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
+
+
+
 figure {
 	margin: 1em 0;
 }
@@ -507,6 +517,7 @@ figcaption {
 figure img {
 	margin-bottom: 0px;
 }
+
 hr {
 	margin-top: 20px;
 	margin-bottom: 20px;
@@ -517,8 +528,8 @@ ol p, ul p {
 	margin-bottom: 0px;
 }
 li {
-	margin-bottom: 0.75em;
-	margin-top: 0.75em;
+	margin-bottom: 0.55em;
+	margin-top: 0.55em;
 }
 .md-toc {
 	font-size: .85em;
@@ -528,6 +539,38 @@ li {
 #write .CodeMirror-wrap .CodeMirror-code pre {
     padding-left: 12px;
     font-size: 1.5em;
+}
+progress[value] {
+  /* Reset the default appearance */
+  	-webkit-appearance: none;
+	appearance: none;
+	padding-bottom: 31.5px;
+  	width: 300px;
+  	height: 15px;
+  	border: 0;
+  	border-radius: 10px;
+}
+progress::-webkit-progress-bar {
+    border: 0;
+    height: 15px;
+    border-radius: 10px;
+}
+progress::-moz-progress-bar {
+    border: 0;
+    height: 15px;
+    border-radius: 10px;
+}
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #09c, #f44);
+    border-radius: 10px;
+    background-size: 25px 20px, 100% 100%, 100% 100%;
 }
 ol#footnotes {
 	font-size: 1em;
@@ -576,41 +619,368 @@ ol#footnotes li:before {
 		background-color: none;
 	}
 }
-a:target, ol#footnotes li:target, sup a:target {
-	animation-name: highfade;
-	animation-duration: 2s;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-in-out;
-	-webkit-animation-name: highfade;
-	-webkit-animation-duration: 2s;
-	-webkit-animation-iteration-count: 1;
-	-webkit-animation-timing-function: ease-in-out;
+.md-diagram-panel {
+	zoom: 125%;
 }
-a:target {
-	border: 0;
-	outline: 0;
+foreignObject{
+	height: 2em;
 }
-animation-iteration-count: 1;
--webkit-animation-timing-function: ease-in-out;
+.mermaid .label {
+  color: #333;
 }
-a:target {
-	border: 0;
-	outline: 0;
+.node rect,
+.node circle,
+.node ellipse,
+.node polygon {
+  fill: #ECECFF;
+  stroke: #CCCCFF;
+  stroke-width: 1px;
 }
-tion-iteration-count: 1;
--webkit-animation-timing-function: ease-in-out;
+.arrowheadPath {
+  fill: #333333;
 }
-a:target {
-	border: 0;
-	outline: 0;
+.edgePath .path {
+  stroke: #333333;
+}
+.edgeLabel {
+  background-color: #e8e8e8;
+}
+.cluster rect {
+  fill: #ffffde !important;
+  rx: 4 !important;
+  stroke: #aaaa33 !important;
+  stroke-width: 1px !important;
+}
+.cluster text {
+  fill: #333;
+}
+.actor {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+text.actor {
+  fill: black;
+  stroke: none;
+}
+.actor-line {
+  stroke: grey;
+}
+.messageLine0 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  marker-end: "url(file:///C://Users//User//AppData//Roaming//Typora/themes/#arrowhead)";
+  stroke: #333;
+}
+.messageLine1 {
+  stroke-width: 1.5;
+  stroke-dasharray: "2 2";
+  stroke: #333;
+}
+#arrowhead {
+  fill: #333;
+}
+#crosshead path {
+  fill: #333 !important;
+  stroke: #333 !important;
+}
+.messageText {
+  fill: #333;
+  stroke: none;
+}
+.labelBox {
+  stroke: #CCCCFF;
+  fill: #ECECFF;
+}
+.labelText {
+  fill: black;
+  stroke: none;
+}
+.loopText {
+  fill: black;
+  stroke: none;
+}
+.loopLine {
+  stroke-width: 2;
+  stroke-dasharray: "2 2";
+  marker-end: "url(file:///C://Users//User//AppData//Roaming//Typora/themes/#arrowhead)";
+  stroke: #CCCCFF;
+}
+.note {
+  stroke: #aaaa33;
+  fill: #fff5ad;
+}
+.noteText {
+  fill: black;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+/** Section styling */
+.section {
+  stroke: none;
+  opacity: 0.2;
+}
+.section0 {
+  fill: rgba(102, 102, 255, 0.49);
+}
+.section2 {
+  fill: #fff400;
+}
+.section1,
+.section3 {
+  fill: white;
+  opacity: 0.2;
+}
+.sectionTitle0 {
+  fill: #333;
+}
+.sectionTitle1 {
+  fill: #333;
+}
+.sectionTitle2 {
+  fill: #333;
+}
+.sectionTitle3 {
+  fill: #333;
+}
+.sectionTitle {
+  text-anchor: start;
+  font-size: 11px;
+  text-height: 14px;
+}
+/* Grid and axis */
+.grid .tick {
+  stroke: lightgrey;
+  opacity: 0.3;
+  shape-rendering: crispEdges;
+}
+.grid path {
+  stroke-width: 0;
+}
+/* Today line */
+.today {
+  fill: none;
+  stroke: red;
+  stroke-width: 2px;
+}
+/* Task styling */
+/* Default task */
+.task {
+  stroke-width: 2;
+}
+.taskText {
+  text-anchor: middle;
+  font-size: 11px;
+}
+.taskTextOutsideRight {
+  fill: black;
+  text-anchor: start;
+  font-size: 11px;
+}
+.taskTextOutsideLeft {
+  fill: black;
+  text-anchor: end;
+  font-size: 11px;
+}
+/* Specific task settings for the sections*/
+.taskText0,
+.taskText1,
+.taskText2,
+.taskText3 {
+  fill: white;
+}
+.task0,
+.task1,
+.task2,
+.task3 {
+  fill: #8a90dd;
+  stroke: #534fbc;
+}
+.taskTextOutside0,
+.taskTextOutside2 {
+  fill: black;
+}
+.taskTextOutside1,
+.taskTextOutside3 {
+  fill: black;
+}
+/* Active task */
+.active0,
+.active1,
+.active2,
+.active3 {
+  fill: #bfc7ff;
+  stroke: #534fbc;
+}
+.activeText0,
+.activeText1,
+.activeText2,
+.activeText3 {
+  fill: black !important;
+}
+/* Completed task */
+.done0,
+.done1,
+.done2,
+.done3 {
+  stroke: grey;
+  fill: lightgrey;
+  stroke-width: 2;
+}
+.doneText0,
+.doneText1,
+.doneText2,
+.doneText3 {
+  fill: black !important;
+}
+/* Tasks on the critical line */
+.crit0,
+.crit1,
+.crit2,
+.crit3 {
+  stroke: #ff8888;
+  fill: red;
+  stroke-width: 2;
+}
+.activeCrit0,
+.activeCrit1,
+.activeCrit2,
+.activeCrit3 {
+  stroke: #ff8888;
+  fill: #bfc7ff;
+  stroke-width: 2;
+}
+.doneCrit0,
+.doneCrit1,
+.doneCrit2,
+.doneCrit3 {
+  stroke: #ff8888;
+  fill: lightgrey;
+  stroke-width: 2;
+  cursor: pointer;
+  shape-rendering: crispEdges;
+}
+.doneCritText0,
+.doneCritText1,
+.doneCritText2,
+.doneCritText3 {
+  fill: black !important;
+}
+.activeCritText0,
+.activeCritText1,
+.activeCritText2,
+.activeCritText3 {
+  fill: black !important;
+}
+.titleText {
+  text-anchor: middle;
+  font-size: 18px;
+  fill: black;
+}
+g.classGroup text {
+  fill: #9370DB;
+  stroke: none;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 10px;
+}
+g.classGroup rect {
+  fill: #ECECFF;
+  stroke: #9370DB;
+}
+g.classGroup line {
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+svg .classLabel .box {
+  stroke: none;
+  stroke-width: 0;
+  fill: #ECECFF;
+  opacity: 0.5;
+}
+svg .classLabel .label {
+  fill: #9370DB;
+  font-size: 10px;
+}
+.relation {
+  stroke: #9370DB;
+  stroke-width: 1;
+  fill: none;
+}
+.composition {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#compositionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.aggregation {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationStart {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#aggregationEnd {
+  fill: #ECECFF;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#dependencyEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionStart {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+#extensionEnd {
+  fill: #9370DB;
+  stroke: #9370DB;
+  stroke-width: 1;
+}
+.node text {
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 14px;
+}
+div.mermaidTooltip {
+  position: absolute;
+  text-align: center;
+  max-width: 200px;
+  padding: 2px;
+  font-family: 'trebuchet ms', verdana, arial;
+  font-size: 12px;
+  background: #ffffde;
+  border: 1px solid #aaaa33;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 100;
 }
 
 
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
 </style>
 </head>
 <body class='typora-export os-windows' >
-<div  id='write'  class = 'is-node'><h1><a name="-現代中國-綜合國力" class="md-header-anchor"></a><span>現代中國-綜合國力</span></h1><div class="md-diagram-panel"><svg id="mermaidChart15" width="1398.1484375" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="-10 -10 938.765625 264"><style>
+<div  id='write'  class = 'is-node'><h1><a name="-現代中國-綜合國力" class="md-header-anchor"></a><span>現代中國-綜合國力</span></h1><div class="md-diagram-panel"><svg id="mermaidChart24" width="1404.9453125" xmlns="http://www.w3.org/2000/svg" height="100%" viewBox="-10 -10 943.296875 252.09375"><style>
 :root { --mermaid-font-family: sans-serif}
-:root { --mermaid-alt-font-family: sans-serif}</style><style></style><g></g><defs><marker id="extensionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="extensionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="compositionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="compositionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><g id="mermaidChart15classId0" class="classGroup" transform="translate(471.0078125,0 )"><rect x="0" y="0" width="90.078125" height="67"></rect><text y="15" x="0"><tspan class="title" x="24.5390625">綜合國力</tspan></text><line x1="0" y1="24" y2="24" x2="90.078125"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">無Data "軟實力"</tspan></text><line x1="0" y1="43" y2="43" x2="90.078125"></line><text x="5" y="58" fill="white" class="classText"><tspan x="5">有Data (硬實力)</tspan></text></g><g id="mermaidChart15classId1" class="classGroup" transform="translate(0,137 )"><rect x="0" y="0" width="104.65625" height="87"></rect><text y="15" x="0"><tspan class="title" x="36.828125">政治力</tspan></text><line x1="0" y1="24" y2="24" x2="104.65625"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">管制效能 |動員能力|</tspan><tspan x="5" dy="10">建立安全環境</tspan></text><line x1="0" y1="53" y2="53" x2="104.65625"></line><text x="5" y="68" fill="white" class="classText"><tspan x="5">認受性()</tspan><tspan x="5" dy="10">國民凝聚力()</tspan></text></g><g id="mermaidChart15classId2" class="classGroup" transform="translate(154.65625,117 )"><rect x="0" y="0" width="97" height="127"></rect><text y="15" x="0"><tspan class="title" x="33">經濟力</tspan></text><line x1="0" y1="24" y2="24" x2="97"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">國內生產總值</tspan><tspan x="5" dy="10">經濟增長速度</tspan><tspan x="5" dy="10">外匯儲備</tspan><tspan x="5" dy="10">人均經濟生產總值</tspan><tspan x="5" dy="10">對外貿易額</tspan></text><line x1="0" y1="83" y2="83" x2="97"></line><text x="5" y="98" fill="white" class="classText"><tspan x="5">全球競爭力()</tspan><tspan x="5" dy="10">吸引外資能力()</tspan><tspan x="5" dy="10">產業結構()</tspan></text></g><g id="mermaidChart15classId3" class="classGroup" transform="translate(301.65625,132 )"><rect x="0" y="0" width="133.046875" height="97"></rect><text y="15" x="0"><tspan class="title" x="51.0234375">資源力</tspan></text><line x1="0" y1="24" y2="24" x2="133.046875"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">土地資源 [人均7畝地]</tspan><tspan x="5" dy="10">水資源 [低於世界標準]</tspan><tspan x="5" dy="10">礦產 [可燃冰&amp;煤炭&amp;稀土]</tspan></text><line x1="0" y1="63" y2="63" x2="133.046875"></line><text x="5" y="78" fill="white" class="classText"><tspan x="5">人口紅利()</tspan><tspan x="5" dy="10">教育水平()</tspan></text></g><g id="mermaidChart15classId4" class="classGroup" transform="translate(484.703125,137 )"><rect x="0" y="0" width="62.6875" height="87"></rect><text y="15" x="0"><tspan class="title" x="15.84375">科技力</tspan></text><line x1="0" y1="24" y2="24" x2="62.6875"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">論文數量</tspan></text><line x1="0" y1="43" y2="43" x2="62.6875"></line><text x="5" y="58" fill="white" class="classText"><tspan x="5">航天科技()</tspan><tspan x="5" dy="10">資訊科技()</tspan><tspan x="5" dy="10">生物科技()</tspan></text></g><g id="mermaidChart15classId5" class="classGroup" transform="translate(597.390625,151 )"><rect x="0" y="0" width="56" height="59"></rect><text y="15" x="0"><tspan class="title" x="13">軍事力</tspan></text><line x1="0" y1="24" y2="24" x2="56"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">國防預算</tspan><tspan x="5" dy="10">軍備武器</tspan></text><line x1="0" y1="53" y2="53" x2="56"></line><text x="5" y="68" fill="white" class="classText"></text></g><g id="mermaidChart15classId6" class="classGroup" transform="translate(703.390625,142 )"><rect x="0" y="0" width="102.6875" height="77"></rect><text y="15" x="0"><tspan class="title" x="35.84375">外交力</tspan></text><line x1="0" y1="24" y2="24" x2="102.6875"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">外交政策</tspan><tspan x="5" dy="10">國際貢獻</tspan></text><line x1="0" y1="53" y2="53" x2="102.6875"></line><text x="5" y="68" fill="white" class="classText"><tspan x="5">處理國際事務能力()</tspan></text></g><g id="mermaidChart15classId7" class="classGroup" transform="translate(856.078125,147 )"><rect x="0" y="0" width="62.6875" height="67"></rect><text y="15" x="0"><tspan class="title" x="15.84375">文化力</tspan></text><line x1="0" y1="24" y2="24" x2="62.6875"></line><text x="5" y="34" fill="white" class="classText"><tspan x="5">文化載體</tspan></text><line x1="0" y1="43" y2="43" x2="62.6875"></line><text x="5" y="58" fill="white" class="classText"><tspan x="5">維權事務()</tspan></text></g><path d="M471.0078125,39.181860300559336L401.2278645833333,47.984883583799444C331.4479166666667,56.78790686703956,191.88802083333334,74.39395343351977,122.10807291666667,90.69697671675988C52.328125,107,52.328125,122,52.328125,129.5L52.328125,137" id="edge0" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="220.84375" y="54.90625" width="36.015625" height="19.015625"></rect><text class="label" x="239.34490164278748" y="68.4070755525778" fill="red" text-anchor="middle">硬實力</text></g><path d="M471.0078125,41.92078651685393L426.3658854166667,50.26732209737827C381.7239583333333,58.613857677902615,292.4401041666667,75.30692883895131,247.79817708333334,87.82013108614233C203.15625,100.33333333333333,203.15625,108.66666666666667,203.15625,112.83333333333333L203.15625,117" id="edge1" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="306.28125" y="55.75" width="36.015625" height="19.015625"></rect><text class="label" x="324.794942733915" y="69.25766463941184" fill="red" text-anchor="middle">硬實力</text></g><path d="M471.0078125,51.31859248692344L453.8697916666667,58.0988270724362C436.7317708333333,64.87906165794897,402.4557291666667,78.43953082897448,385.3177083333333,91.8864320811539C368.1796875,105.33333333333333,368.1796875,118.66666666666667,368.1796875,125.33333333333333L368.1796875,132" id="edge2" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="382.484375" y="65.515625" width="36.015625" height="19.015625"></rect><text class="label" x="400.9962940334053" y="79.01692028730707" fill="red" text-anchor="middle">硬實力</text></g><path d="M516.046875,67L516.046875,71.16666666666667C516.046875,75.33333333333333,516.046875,83.66666666666667,516.046875,95.33333333333333C516.046875,107,516.046875,122,516.046875,129.5L516.046875,137" id="edge3" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="497.546875" y="88.5" width="36" height="19"></rect><text class="label" x="516.046875" y="102" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.0859375,57.596348956844814L571.8033854166666,63.33029079737068C582.5208333333334,69.06423263789655,603.9557291666666,80.53211631894827,614.6731770833334,96.09939149280747C625.390625,111.66666666666667,625.390625,131.33333333333334,625.390625,141.16666666666666L625.390625,151" id="edge4" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="600.734375" y="75.203125" width="36.015625" height="19.015625"></rect><text class="label" x="619.249561946312" y="88.71446983809554" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.0859375,44.538639041633935L593.3606770833334,52.44886586802827C625.6354166666666,60.35909269442262,690.1848958333334,76.17954634721131,722.4596354166666,92.42310650693899C754.734375,108.66666666666667,754.734375,125.33333333333333,754.734375,133.66666666666666L754.734375,142" id="edge5" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="663.6875" y="60.71875" width="36.015625" height="19.015625"></rect><text class="label" x="682.1915093980369" y="74.2204445657404" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.0859375,40.59467561427129L615.4752604166666,49.16222967855941C669.8645833333334,57.72978374284753,778.6432291666666,74.86489187142377,833.0325520833334,92.59911260237855C887.421875,110.33333333333333,887.421875,128.66666666666666,887.421875,137.83333333333334L887.421875,147" id="edge6" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="732.90625" y="57.0625" width="36.015625" height="19.015625"></rect><text class="label" x="751.4189428559206" y="70.5764482519592" fill="red" text-anchor="middle">軟實力</text></g></svg></div><h2><a name="paper2-衡量指標" class="md-header-anchor"></a><span>Paper2 衡量指標:</span></h2><ul><li><p><strong><span>GDP</span></strong><span> &gt; 經濟</span></p></li><li><p><strong><span>人類發展指數</span></strong><span> &gt; 文化力</span></p></li><li><p><span>堅尼係數 &gt; 經濟力 / 社會發展</span></p></li><li><p><strong><span>可持續發展</span></strong><span> &gt; 社會發展</span></p><ul><li><p><span>環環相扣 &gt; 三段:</span></p><ul><li><span>經濟</span></li><li><span>環境</span></li><li><span>文化</span></li></ul></li></ul></li><li><p><span>信息力 &gt; 文化力 / 社會發展</span></p><ul><li><strong><span>網絡審查制度</span></strong></li><li><span>電話普及率</span></li><li><span>互聯網人數</span></li></ul></li></ul></div>
+:root { --mermaid-alt-font-family: sans-serif}</style><style></style><g></g><defs><marker id="extensionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 1,7 L18,13 V 1 Z"></path></marker></defs><defs><marker id="extensionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 1,1 V 13 L18,7 Z"></path></marker></defs><defs><marker id="compositionStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="compositionEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="aggregationEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyStart" class="extension" refX="0" refY="7" markerWidth="190" markerHeight="240" orient="auto"><path d="M 5,7 L9,13 L1,7 L9,1 Z"></path></marker></defs><defs><marker id="dependencyEnd" refX="19" refY="7" markerWidth="20" markerHeight="28" orient="auto"><path d="M 18,7 L9,13 L14,7 L9,1 Z"></path></marker></defs><g id="mermaidChart24classId0" class="classGroup" transform="translate(474.828125,0 )"><rect x="0" y="0" width="87.109375" height="61.046875"></rect><text y="15" x="0"><tspan class="title" x="22.9453125">綜合國力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="87.109375"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">無Data "軟實力"</tspan></text><line x1="0" y1="39.03125" y2="39.03125" x2="87.109375"></line><text x="5" y="54.03125" fill="white" class="classText"><tspan x="5">有Data (硬實力)</tspan></text></g><g id="mermaidChart24classId1" class="classGroup" transform="translate(0,131.046875 )"><rect x="0" y="0" width="109.328125" height="81.046875"></rect><text y="15" x="0"><tspan class="title" x="39.0546875">政治力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="109.328125"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">管制效能 |動員能力|</tspan><tspan x="5" dy="10">建立安全環境</tspan></text><line x1="0" y1="49.03125" y2="49.03125" x2="109.328125"></line><text x="5" y="64.03125" fill="white" class="classText"><tspan x="5">認受性()</tspan><tspan x="5" dy="10">國民凝聚力()</tspan></text></g><g id="mermaidChart24classId2" class="classGroup" transform="translate(159.328125,111.046875 )"><rect x="0" y="0" width="97.015625" height="121.046875"></rect><text y="15" x="0"><tspan class="title" x="32.8984375">經濟力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="97.015625"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">國內生產總值</tspan><tspan x="5" dy="10">經濟增長速度</tspan><tspan x="5" dy="10">外匯儲備</tspan><tspan x="5" dy="10">人均經濟生產總值</tspan><tspan x="5" dy="10">對外貿易額</tspan></text><line x1="0" y1="79.03125" y2="79.03125" x2="97.015625"></line><text x="5" y="94.03125" fill="white" class="classText"><tspan x="5">全球競爭力()</tspan><tspan x="5" dy="10">吸引外資能力()</tspan><tspan x="5" dy="10">產業結構()</tspan></text></g><g id="mermaidChart24classId3" class="classGroup" transform="translate(306.34375,126.046875 )"><rect x="0" y="0" width="130.296875" height="91.046875"></rect><text y="15" x="0"><tspan class="title" x="49.5390625">資源力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="130.296875"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">土地資源 [人均7畝地]</tspan><tspan x="5" dy="10">水資源 [低於世界標準]</tspan><tspan x="5" dy="10">礦產 [可燃冰&amp;煤炭&amp;稀土]</tspan></text><line x1="0" y1="59.03125" y2="59.03125" x2="130.296875"></line><text x="5" y="74.03125" fill="white" class="classText"><tspan x="5">人口紅利()</tspan><tspan x="5" dy="10">教育水平()</tspan></text></g><g id="mermaidChart24classId4" class="classGroup" transform="translate(486.640625,131.046875 )"><rect x="0" y="0" width="63.484375" height="81.046875"></rect><text y="15" x="0"><tspan class="title" x="16.1328125">科技力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="63.484375"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">論文數量</tspan></text><line x1="0" y1="39.03125" y2="39.03125" x2="63.484375"></line><text x="5" y="54.03125" fill="white" class="classText"><tspan x="5">航天科技()</tspan><tspan x="5" dy="10">資訊科技()</tspan><tspan x="5" dy="10">生物科技()</tspan></text></g><g id="mermaidChart24classId5" class="classGroup" transform="translate(600.125,144.75 )"><rect x="0" y="0" width="56.203125" height="53.640625"></rect><text y="15" x="0"><tspan class="title" x="12.8984375">軍事力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="56.203125"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">國防預算</tspan><tspan x="5" dy="10">軍備武器</tspan></text><line x1="0" y1="49.03125" y2="49.03125" x2="56.203125"></line><text x="5" y="64.03125" fill="white" class="classText"></text></g><g id="mermaidChart24classId6" class="classGroup" transform="translate(706.328125,136.046875 )"><rect x="0" y="0" width="103.484375" height="71.046875"></rect><text y="15" x="0"><tspan class="title" x="36.1328125">外交力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="103.484375"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">外交政策</tspan><tspan x="5" dy="10">國際貢獻</tspan></text><line x1="0" y1="49.03125" y2="49.03125" x2="103.484375"></line><text x="5" y="64.03125" fill="white" class="classText"><tspan x="5">處理國際事務能力()</tspan></text></g><g id="mermaidChart24classId7" class="classGroup" transform="translate(859.8125,141.046875 )"><rect x="0" y="0" width="63.484375" height="61.046875"></rect><text y="15" x="0"><tspan class="title" x="16.1328125">文化力</tspan></text><line x1="0" y1="22.015625" y2="22.015625" x2="63.484375"></line><text x="5" y="32.015625" fill="white" class="classText"><tspan x="5">文化載體</tspan></text><line x1="0" y1="39.03125" y2="39.03125" x2="63.484375"></line><text x="5" y="54.03125" fill="white" class="classText"><tspan x="5">維權事務()</tspan></text></g><path d="M474.828125,35.73846486138722L404.80078125,44.12319988448936C334.7734375,52.50793490759148,194.71875,69.27740495379574,124.69140625,85.16213997689788C54.6640625,101.046875,54.6640625,116.046875,54.6640625,123.546875L54.6640625,131.046875" id="edge0" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="224.09375" y="50.65625" width="36.21875" height="17.8125"></rect><text class="label" x="242.40566572063204" y="63.567604596181816" fill="red" text-anchor="middle">硬實力</text></g><path d="M474.828125,38.310686910377356L430.3294270833333,46.26671825864779C385.8307291666667,54.222749606918235,296.8333333333333,70.13481230345911,252.33463541666666,82.25751031839623C207.8359375,94.38020833333333,207.8359375,102.71354166666667,207.8359375,106.88020833333333L207.8359375,111.046875" id="edge1" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="310.71875" y="51.46875" width="36.21875" height="17.8125"></rect><text class="label" x="329.02715748683704" y="64.3787995170704" fill="red" text-anchor="middle">硬實力</text></g><path d="M474.828125,46.98674800220721L457.60546875,53.496769168506006C440.3828125,60.006790334804805,405.9375,73.0268326674024,388.71484375,86.20352050036786C371.4921875,99.38020833333333,371.4921875,112.71354166666667,371.4921875,119.38020833333333L371.4921875,126.046875" id="edge2" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="386.140625" y="60.6875" width="36.21875" height="17.8125"></rect><text class="label" x="404.4520377969594" y="73.58832505528717" fill="red" text-anchor="middle">硬實力</text></g><path d="M518.3828125,61.046875L518.3828125,65.21354166666667C518.3828125,69.38020833333333,518.3828125,77.71354166666667,518.3828125,89.38020833333333C518.3828125,101.046875,518.3828125,116.046875,518.3828125,123.546875L518.3828125,131.046875" id="edge3" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="500.078125" y="83.140625" width="36.21875" height="17.8125"></rect><text class="label" x="518.3828125" y="96.046875" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.9375,52.53930976618065L572.9856770833334,58.12390397181721C584.0338541666666,63.70849817745377,606.1302083333334,74.87768658872689,617.1783854166666,90.24613496103011C628.2265625,105.61458333333333,628.2265625,125.18229166666667,628.2265625,134.96614583333334L628.2265625,144.75" id="edge4" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="602.96875" y="69.625" width="36.21875" height="17.8125"></rect><text class="label" x="621.2772324757287" y="82.53415177933888" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.9375,40.612849627200134L594.6263020833334,48.18518718933345C627.3151041666666,55.757524751466754,692.6927083333334,70.90219987573339,725.3815104166666,86.80787077120003C758.0703125,102.71354166666667,758.0703125,119.38020833333333,758.0703125,127.71354166666667L758.0703125,136.046875" id="edge5" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="666.046875" y="56.0625" width="36.21875" height="17.8125"></rect><text class="label" x="684.3589814865107" y="68.97169802761186" fill="red" text-anchor="middle">硬實力</text></g><path d="M561.9375,37.003845406513L616.8736979166666,45.17768367209417C671.8098958333334,53.35152193767533,781.6822916666666,69.69919846883766,836.6184895833334,87.03970340108549C891.5546875,104.38020833333333,891.5546875,122.71354166666667,891.5546875,131.88020833333334L891.5546875,141.046875" id="edge6" class="relation" marker-start="url(#extensionStart)"></path><g class="classLabel"><rect class="box" x="735.640625" y="52.671875" width="36.21875" height="17.8125"></rect><text class="label" x="753.9466612201204" y="65.57247390359032" fill="red" text-anchor="middle">軟實力</text></g></svg></div><h2><a name="paper2-衡量指標" class="md-header-anchor"></a><span>Paper2 衡量指標:</span></h2><ul><li><p><strong><span>GDP</span></strong><span> &gt; 經濟</span></p></li><li><p><strong><span>人類發展指數</span></strong><span> &gt; 文化力</span></p></li><li><p><span>堅尼係數 &gt; 經濟力 / 社會發展</span></p></li><li><p><strong><span>可持續發展</span></strong><span> &gt; 社會發展</span></p><ul><li><p><span>環環相扣 &gt; 三段:</span></p><ul><li><span>經濟</span></li><li><span>環境</span></li><li><span>文化</span></li></ul></li></ul></li><li><p><span>信息力 &gt; 文化力 / 社會發展</span></p><ul><li><strong><span>網絡審查制度</span></strong></li><li><span>電話普及率</span></li><li><span>互聯網人數</span></li></ul></li></ul></div>
 </body>
 </html>
